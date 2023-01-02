@@ -19,7 +19,7 @@ class OkaKnapp : public Button {
         Label* label;
 };
 
-
+//test
 
 int main(int argc, char** argv){
 
