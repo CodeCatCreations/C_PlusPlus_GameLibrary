@@ -2,6 +2,9 @@
 #define COMPONENT_H
 #include <SDL2/SDL.h>
 
+//TODO: Sub-klasser till denna, Bullet + Pistol + Sprite
+
+
 namespace cwing {
 	class Component
 	{

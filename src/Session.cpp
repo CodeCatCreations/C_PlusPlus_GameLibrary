@@ -5,7 +5,9 @@
 
 using namespace std;
 
-#define FPS 80
+#define FPS 80;
+
+namespace cwing {
 
 void Session::add(Component* comp) {
 	added.push_back(comp);
@@ -53,14 +55,15 @@ void Session::run() {
 					i++;
 		removed.clear();
 
-		SDL_SetRenderDrawColor(sys.ren, 255, 255, 255, 255);
-		SDL_RenderClear(sys.ren);
+		SDL_SetRenderDrawColor(sys.get_ren(), 255, 255, 255, 255);
+		SDL_RenderClear(sys.get_ren());
 		for (Component* c : comps)
 			c->draw();
-		SDL_RenderPresent(sys.ren);
+		SDL_RenderPresent(sys.get_ren());
 
 		int delay = nextTick - SDL_GetTicks();
 		if (delay > 0)
 			SDL_Delay(delay);
 	} // yttre while
+}
 }
