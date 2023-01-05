@@ -13,7 +13,7 @@ namespace cwing {
         void draw() const;
         std::string getText() const;
         void setText(std::string newText);
-        void Label::tick(){}
+        void tick(){}
         ~Label();
 
     protected: 

@@ -9,6 +9,7 @@ using namespace std;
 
 namespace cwing {
 
+
 void Session::add(Component* comp) {
 	added.push_back(comp);
 }

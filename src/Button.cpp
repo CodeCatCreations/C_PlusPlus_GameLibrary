@@ -28,23 +28,26 @@ namespace cwing {
 
 	void Button::mouseDown(const SDL_Event& eve) {
 		SDL_Point p = { eve.button.x, eve.button.y };
-		if (SDL_PointInRect(&p, &getRect()))
+		SDL_Rect rect = getRect();
+		if (SDL_PointInRect(&p, &rect))
 			isDown = true;
 	}
 	void Button::mouseUp(const SDL_Event& eve) {
 		SDL_Point p = { eve.button.x, eve.button.y };
-		if (SDL_PointInRect(&p, &getRect()))
+		SDL_Rect rect = getRect();
+		if (SDL_PointInRect(&p, &rect))
 			perform(this);
 
 		isDown = false;
 	}
 	void Button::draw() const {
-		if (isDown)
-			SDL_RenderCopy(sys.get_ren(), downIcon, NULL, &getRect());
-		else
-			SDL_RenderCopy(sys.get_ren(), upIcon, NULL, &getRect());
-
-		SDL_RenderCopy(sys.get_ren(), texture, NULL, &getRect());
+		if (isDown) {
+			SDL_Rect rect = getRect();
+			SDL_RenderCopy(sys.get_ren(), downIcon, NULL, &rect);
+		} else {
+			SDL_RenderCopy(sys.get_ren(), upIcon, NULL, &rect);
+		}
+		SDL_RenderCopy(sys.get_ren(), texture, NULL, &rect);
 
 	}
 }
