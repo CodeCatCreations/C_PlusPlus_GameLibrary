@@ -1,41 +1,65 @@
+#include "Constants.h" //gResPath-contains path to your resources.
 #include <SDL2/SDL.h>
-
+#include "Session.h"
+#include "Component.h"
+#include <SDL2/SDL_image.h>
+#include "System.h"
 #include <string>
 
-#include "Button.h"
-#include "Label.h"
-#include "Session.h"
-using namespace std;
-using namespace cwing;
+/*
+*   'gResPath' is a global constant defined in "Constants.h", 
+*   representing the relative path to your resource folders as a string,
+*   i.e. ' const std::string gResPath = "../../resources/" '
+*   Use it through its namespace, 'constants::gResPath'.
+*/
 
-int value = 0;
+cwing::Session ses;
 
-class OkaKnapp : public Button {
-   public:
-    OkaKnapp(Label* lbl) : Button(100, 100, 200, 70, "Öka"), label(lbl){};
-    void perform(Button* source) {
-        value++;
-        label->setText(to_string(value));
-    }
+class Bullet : public cwing::Component {
 
-   private:
-    Label* label;
+public:
+	static Bullet* getInstance(int x) {
+		return new Bullet(x);
+	}
+	Bullet(int x) : Component(x, 500, 40,40){
+		texture = IMG_LoadTexture(cwing::sys.get_ren(), (constants::gResPath + "images/dot40x40.bmp").c_str() );
+	}
+	~Bullet() {
+		SDL_DestroyTexture(texture);
+	}
+	void draw() const {
+		// Code adjustment to handle the address to temporary object. 
+		const SDL_Rect &rect = getRect();
+		//SDL_RenderCopy(sys.ren, texture, NULL, &getRect());
+		SDL_RenderCopy(cwing::sys.get_ren(), texture, NULL, &rect);
+	}
+	void tick() {
+		counter++;
+		if (rect.y <= 0)
+			ses.remove(this);
+		else if (counter % 10 == 0)
+			rect.y--;
+	}
+private:
+	SDL_Texture* texture;
+	int counter = 0;
 };
 
-// test
+class Pistol : public cwing::Component {
+public:
+	Pistol() :Component(0, 0, 0, 0) {}
+	void draw() const {}
+	void tick() {}
+	void mouseDown(int x, int y) {
+		Bullet* b = Bullet::getInstance(x);
+		ses.add(b);
+	}
+};
 
 int main(int argc, char** argv) {
-    Session ses;
-    Label* lbl = Label::getInstance(400, 100, 200, 70, "0");
-    // Button* b = Button::getInstance(100, 100, 200, 70, "Knapp");
-    // ses.add(b);
-
-    ses.add(lbl);
-
-    Button* b1 = new OkaKnapp(lbl);
-    ses.add(b1);
-    lbl->setText("Hoppsan");
-    ses.run();
-
-    return 0;
+	Pistol* pistol = new Pistol();
+	ses.add(pistol);
+	ses.run();
+	
+	return 0;
 }

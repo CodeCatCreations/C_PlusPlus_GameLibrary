@@ -12,6 +12,7 @@ namespace cwing {
             void mouseUp(const SDL_Event&);
             void draw() const;
             virtual void perform(Button* source) {}
+            void tick(){}
             ~Button();
         protected:
             Button(int x, int y, int w, int h, std::string txt);
