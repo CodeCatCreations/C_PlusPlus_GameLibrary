@@ -16,31 +16,25 @@
 
 cwing::Session ses;
 
-class Bullet : public cwing::Component
-{
+class Bullet: public cwing::Component {
 
 public:
-	static Bullet *getInstance(int x)
-	{
+	static Bullet* getInstance(int x) {
 		return new Bullet(x);
 	}
-	Bullet(int x) : Component(x, 500, 40, 40)
-	{
-		texture = IMG_LoadTexture(cwing::sys.get_ren(), (constants::gResPath + "images/dot40x40.bmp").c_str());
+	Bullet(int x): Component(x, 500, 40, 40) {
+		texture = IMG_LoadTexture(cwing::sys.get_ren(), (constants::gResPath + "images/cats.jpeg").c_str());
 	}
-	~Bullet()
-	{
+	~Bullet() {
 		SDL_DestroyTexture(texture);
 	}
-	void draw() const
-	{
+	void draw() const {
 		// Code adjustment to handle the address to temporary object.
-		const SDL_Rect &rect = getRect();
+		const SDL_Rect& rect = getRect();
 		// SDL_RenderCopy(sys.ren, texture, NULL, &getRect());
 		SDL_RenderCopy(cwing::sys.get_ren(), texture, NULL, &rect);
 	}
-	void tick()
-	{
+	void tick() {
 		counter++;
 		if (rect.y <= 0)
 			ses.remove(this);
@@ -49,26 +43,23 @@ public:
 	}
 
 private:
-	SDL_Texture *texture;
+	SDL_Texture* texture;
 	int counter = 0;
 };
 
-class Pistol : public cwing::Component
-{
+class Pistol: public cwing::Component {
 public:
-	Pistol() : Component(0, 0, 0, 0) {}
+	Pistol(): Component(0, 0, 0, 0) {}
 	void draw() const {}
 	void tick() {}
-	void mouseDown(int x, int y)
-	{
-		Bullet *b = Bullet::getInstance(x);
+	void mouseDown(int x, int y) {
+		Bullet* b = Bullet::getInstance(x);
 		ses.add(b);
 	}
 };
 
-int main(int argc, char **argv)
-{
-	Pistol *pistol = new Pistol();
+int main(int argc, char** argv) {
+	Pistol* pistol = new Pistol();
 	ses.add(pistol);
 	ses.run();
 

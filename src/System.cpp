@@ -3,11 +3,9 @@
 #include <SDL2/SDL.h>
 #include <iostream>
 
-namespace cwing
-{
+namespace cwing {
 
-	System::System()
-	{
+	System::System() {
 		SDL_Init(SDL_INIT_EVERYTHING);
 		// win = SDL_CreateWindow("Cwing", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 600, 400, 0);
 		win = SDL_CreateWindow("GameDemo", 20, 20, 700, 500, 0);
@@ -18,11 +16,11 @@ namespace cwing
 		// Path to your own 'sounds' folder!
 		// musik = Mix_LoadWAV("/Users/kjellna/dev/cpp21/f13b/sounds/bgMusic.wav");
 		musik = Mix_LoadWAV((constants::gResPath + "sounds/jump.mp3").c_str());
+		Mix_VolumeChunk(musik, 40);
 		Mix_PlayChannel(-1, musik, -1);
 	}
 
-	System::~System()
-	{
+	System::~System() {
 		Mix_FreeChunk(musik);
 		Mix_CloseAudio();
 		TTF_CloseFont(font);
@@ -32,13 +30,11 @@ namespace cwing
 		SDL_Quit();
 	}
 
-	SDL_Renderer *System::get_ren() const
-	{
+	SDL_Renderer* System::get_ren() const {
 		return ren;
 	}
 
-	TTF_Font *System::get_font() const
-	{
+	TTF_Font* System::get_font() const {
 		return font;
 	}
 
