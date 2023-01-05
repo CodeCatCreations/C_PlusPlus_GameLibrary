@@ -4,15 +4,12 @@
 #include <array>
 #include <list>
 
-class IntVector
-{
-private: 
-
+class IntVector {
+private:
     int* integers;
     size_t numberOfInts;
 
 public:
-
     IntVector();
     IntVector(const IntVector&);
     IntVector(std::initializer_list<int>);

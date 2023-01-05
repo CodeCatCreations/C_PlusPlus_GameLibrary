@@ -5,10 +5,10 @@
 #include <vector>
 
 namespace cwing {
-	class Session
-	{
+
+	class Session {
 	public:
-		Session(){};
+		Session() {};
 		void add(Component* comp);
 		void remove(Component* comp);
 		void run(); // För varje varv i loopen går man igenom alla komponenter (sprite) och anropar tick()

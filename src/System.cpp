@@ -12,10 +12,10 @@ namespace cwing {
 		ren = SDL_CreateRenderer(win, -1, 0);
 		Mix_OpenAudio(20050, AUDIO_S16SYS, 2, 4096);
 		TTF_Init();
-		font = TTF_OpenFont( (constants::gResPath + "fonts/arial.ttf").c_str(), 36);
+		font = TTF_OpenFont((constants::gResPath + "fonts/arial.ttf").c_str(), 36);
 		// Path to your own 'sounds' folder!
-		//musik = Mix_LoadWAV("/Users/kjellna/dev/cpp21/f13b/sounds/bgMusic.wav");
-		musik = Mix_LoadWAV( (constants::gResPath + "sounds/jump.mp3").c_str() );
+		// musik = Mix_LoadWAV("/Users/kjellna/dev/cpp21/f13b/sounds/bgMusic.wav");
+		musik = Mix_LoadWAV((constants::gResPath + "sounds/jump.mp3").c_str());
 		Mix_PlayChannel(-1, musik, -1);
 	}
 

@@ -1,14 +1,14 @@
 #ifndef SYSTEM_H
 #define SYSTEM_H
 
-#include <SDL2/SDL_mixer.h>
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_mixer.h>
 #include <SDL2/SDL_ttf.h>
 #include <string>
 
 namespace cwing {
-	class System
-	{
+
+	class System {
 	public:
 		System();
 		~System();
