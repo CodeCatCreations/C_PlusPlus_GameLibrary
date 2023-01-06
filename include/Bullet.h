@@ -14,15 +14,16 @@ extern cwing::Session ses;
 class Bullet: public cwing::Component {
 
 public:
-    static Bullet* getInstance(int x) {
-        return new Bullet(x);
+    static Bullet* getInstance(int x, int y) {
+        return new Bullet(x, y);
     }
-    Bullet(int x);
+    Bullet(int x, int y);
     ~Bullet();
     void draw() const;
     void tick();
 
 private:
+    int mouse_y;
     SDL_Texture* texture;
     int counter = 0;
 };

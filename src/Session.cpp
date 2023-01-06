@@ -19,7 +19,7 @@ namespace cwing {
 
 	void Session::run() {
 		bool quit = false;
-		Uint32 tickInterval = 1000 / FPS;
+		Uint32 tickInterval = 500 / FPS;
 
 		while (!quit) {
 			Uint32 nextTick = SDL_GetTicks() + tickInterval;

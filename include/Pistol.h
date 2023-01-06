@@ -17,6 +17,7 @@ public:
     void draw() const;
     void tick();
     void mouseDown(int x, int y);
+    void mouseUp(int x, int y);
 };
 
 #endif // PISTOL_H

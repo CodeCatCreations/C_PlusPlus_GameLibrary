@@ -1,6 +1,6 @@
 #include "Bullet.h"
 
-Bullet::Bullet(int x): Component(x, 500, 40, 40) {
+Bullet::Bullet(int x, int y): Component(x, 500, 40, 40), mouse_y(y) {
     texture = IMG_LoadTexture(cwing::sys.get_ren(), (constants::gResPath + "images/cats.jpeg").c_str());
 }
 
@@ -15,8 +15,8 @@ void Bullet::draw() const {
 
 void Bullet::tick() {
     counter++;
-    if (rect.y <= 0)
+    if (rect.y <= mouse_y)
         ses.remove(this);
     else if (counter % 10 == 0)
-        rect.y--;
+        rect.y -= 10;
 }
