@@ -15,7 +15,7 @@ namespace cwing {
 		font = TTF_OpenFont((constants::gResPath + "fonts/arial.ttf").c_str(), 36);
 		// Path to your own 'sounds' folder!
 		// musik = Mix_LoadWAV("/Users/kjellna/dev/cpp21/f13b/sounds/bgMusic.wav");
-		musik = Mix_LoadWAV((constants::gResPath + "sounds/jump.mp3").c_str());
+		musik = Mix_LoadWAV((constants::gResPath + "sounds/bgTrack.mp3").c_str());
 		Mix_VolumeChunk(musik, 40);
 		Mix_PlayChannel(-1, musik, -1);
 	}

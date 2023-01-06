@@ -23,9 +23,12 @@ public:
     void tick();
 
 private:
+    int mouse_x;
     int mouse_y;
     SDL_Texture* texture;
     int counter = 0;
+    Mix_Chunk* sound;
+    mutable bool sound_played;
 };
 
 #endif 
