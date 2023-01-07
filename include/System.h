@@ -18,7 +18,7 @@ namespace cwing {
 	private:
 		SDL_Window* win;
 		SDL_Renderer* ren;
-		Mix_Chunk* musik;
+		Mix_Chunk* music;
 		TTF_Font* font;
 	};
 

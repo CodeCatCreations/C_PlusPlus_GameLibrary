@@ -1,16 +1,14 @@
 #ifndef GAME_ENGINE_H
 #define GAME_ENGINE_H
 
-#include "System.h"
+#include "Component.h"
 #include "Session.h"
 #include "Sprite.h"
-#include "Component.h"
-#include "Session.h"
-#include "Component.h"
-#include <vector>
-#include <SDL2/SDL.h>
+#include "System.h"
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_mixer.h>
+#include <SDL2/SDL.h>
+#include <vector>
 
 namespace cwing {
 

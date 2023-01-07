@@ -1,7 +1,7 @@
-#include "Session.h"
-#include <SDL2/SDL.h>
 #include "Component.h"
+#include "Session.h"
 #include "System.h"
+#include <SDL2/SDL.h>
 
 using namespace std;
 
@@ -27,7 +27,9 @@ namespace cwing {
 
 			while (SDL_PollEvent(&event)) {
 				switch (event.type) {
-				case SDL_QUIT: quit = true; break;
+				case SDL_QUIT:
+					quit = true;
+					break;
 				case SDL_MOUSEBUTTONDOWN:
 					for (Component* c : comps)
 						c->mouseDown(event.button.x, event.button.y);

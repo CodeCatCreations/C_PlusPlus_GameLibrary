@@ -1,7 +1,7 @@
 #include "Constants.h" //gResPath-contains path to your resources.
 #include "System.h"
-#include <SDL2/SDL.h>
 #include <iostream>
+#include <SDL2/SDL.h>
 
 namespace cwing {
 
@@ -14,14 +14,14 @@ namespace cwing {
 		TTF_Init();
 		font = TTF_OpenFont((constants::gResPath + "fonts/arial.ttf").c_str(), 36);
 		// Path to your own 'sounds' folder!
-		// musik = Mix_LoadWAV("/Users/kjellna/dev/cpp21/f13b/sounds/bgMusic.wav");
-		musik = Mix_LoadWAV((constants::gResPath + "sounds/bgTrack.mp3").c_str());
-		Mix_VolumeChunk(musik, 40);
-		Mix_PlayChannel(-1, musik, -1);
+
+		music = Mix_LoadWAV((constants::gResPath + "sounds/bgTrack.mp3").c_str());
+		Mix_VolumeChunk(music, 40);
+		Mix_PlayChannel(-1, music, -1);
 	}
 
 	System::~System() {
-		Mix_FreeChunk(musik);
+		Mix_FreeChunk(music);
 		Mix_CloseAudio();
 		TTF_CloseFont(font);
 		TTF_Quit();
