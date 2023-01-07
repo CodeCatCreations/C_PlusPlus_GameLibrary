@@ -1,4 +1,4 @@
-#include "Button.h"
+/* #include "Button.h"
 #include "Constants.h"
 #include "System.h"
 #include <SDL2/SDL_image.h>
@@ -48,4 +48,4 @@ namespace cwing {
 		}
 		SDL_RenderCopy(sys.get_ren(), texture, NULL, &rect);
 	}
-}
+} */
