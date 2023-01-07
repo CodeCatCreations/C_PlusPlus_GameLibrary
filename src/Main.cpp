@@ -1,3 +1,4 @@
+
 #include "Pistol.h"
 
 cwing::Session ses;
@@ -9,9 +10,6 @@ int main(int argc, char** argv) {
 
 	return 0;
 }
-
-
-
 
 
 
