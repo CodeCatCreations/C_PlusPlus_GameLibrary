@@ -38,6 +38,10 @@ namespace cwing {
 		return font;
 	}
 
+	SDL_Window* System::get_win() const {
+		return win;
+	}
+
 	System sys; // Statiskt globalt objekt (definierad utanför funktioner.)
 
 }

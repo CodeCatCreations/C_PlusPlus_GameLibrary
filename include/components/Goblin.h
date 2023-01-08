@@ -17,6 +17,10 @@ private:
 	std::string imgPath = "images/goblin.svg";
 	SDL_Texture* texture;
 	int counter = 0;
+	static std::vector<Goblin*> goblins;
+	int y_of_screen_bottom;
+	int x_of_screen_width;
+
 };
 
 #endif
