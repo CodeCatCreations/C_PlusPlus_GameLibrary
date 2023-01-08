@@ -19,5 +19,7 @@ namespace cwing {
 		bool quit = false;
 	};
 
+	extern Session ses;
+
 }
 #endif

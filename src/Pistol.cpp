@@ -8,7 +8,7 @@ void Pistol::tick() {}
 
 void Pistol::mouseDown(int x, int y) {
     Bullet* b = Bullet::getInstance(x, y);
-    ses.add(b);
+    cwing::ses.add(b);
 }
 
 void Pistol::mouseUp(int x, int y) {}

@@ -3,16 +3,19 @@
 #include "Pistol.h"
 #include "sprites/Goblin.h"
 
-cwing::Session ses;
+namespace cwing {
+	Session ses; // Statisk global Session-objekt
+	System sys; // Statisk global System-objekt
+}
 
 int main(int argc, char** argv) {
-	// Pistol* pistol = new Pistol();
-	// ses.add(pistol);
+	Pistol* pistol = new Pistol();
+	cwing::ses.add(pistol);
 
 	Goblin* goblin = new Goblin(0, 50, 50);
-	ses.add(goblin);
+	cwing::ses.add(goblin);
 
-	ses.run();
+	cwing::ses.run();
 
 	return 0;
 }

@@ -19,7 +19,7 @@ void Goblin::tick() {
 
 	counter++;
 	if (rect.y >= 500)
-		ses.remove(this);
+		cwing::ses.remove(this);
 	else if (counter % 100 == 0)
 		rect.y += 2;
 
