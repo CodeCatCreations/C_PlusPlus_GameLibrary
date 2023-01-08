@@ -17,13 +17,14 @@ CC = g++
 COMPILER_FLAGS = -std=c++17 -Wall -O0 -g
 
 # ALLA filer med filändelsen .cpp i foldern SRC_DIR
-SRC_FILES = $(wildcard $(SRC_DIR)/*.cpp)
+SRC_FILES = $(wildcard $(SRC_DIR)/**/*.cpp)
+BASE_FILES = $(wildcard $(SRC_DIR)/*.cpp)
 
 # INKLUDERINGSFILER-var dina header-filer finns
 # Mac INCLUDE_PATHS!
 #INCLUDE_PATHS = -Iinclude -I/usr/local/include
 # Windows INCLUDE_PATHS!
-INCLUDE_PATHS = -Iinclude -IC:/msys64/mingw64/include -IC:/SDL2/include
+INCLUDE_PATHS = -Iinclude/components -Iinclude/backend -IC:/msys64/mingw64/include -IC:/SDL2/include
 
 # BIBLIOTEKSFILER
 # Mac LIBRARY_PATHS!
@@ -32,11 +33,11 @@ INCLUDE_PATHS = -Iinclude -IC:/msys64/mingw64/include -IC:/SDL2/include
 LIBRARY_PATHS = -Llib -LC:/msys64/mingw64/lib -LC:/SDL2/lib
 
 # LÄNKNING - objekfiler som används vid länkning. Enklare program utan SDL behöver normalt inte några speciella länk-flaggor
-LINKER_FLAGS = -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf 
+LINKER_FLAGS = -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf
 # Om SDL2 används, Mac LINKER_FLAGS!
 #LINKER_FLAGS = -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf
 # Om SDL2 används, Windows LINKER_FLAGS!
 #LINKER_FLAGS = -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf
 
 all:
-	$(CC) $(COMPILER_FLAGS) $(INCLUDE_PATHS) $(LIBRARY_PATHS) $(SRC_FILES) $(LINKER_FLAGS) -o $(BUILD_DIR)/$(OBJ_NAME)
+	$(CC) $(COMPILER_FLAGS) $(INCLUDE_PATHS) $(LIBRARY_PATHS) $(SRC_FILES) $(BASE_FILES) $(LINKER_FLAGS) -o $(BUILD_DIR)/$(OBJ_NAME)

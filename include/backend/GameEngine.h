@@ -3,7 +3,6 @@
 
 #include "Component.h"
 #include "Session.h"
-#include "Sprite.h"
 #include "System.h"
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_mixer.h>

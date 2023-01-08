@@ -1,5 +1,5 @@
 #include "Constants.h"
-#include "sprites/Goblin.h"
+#include "Goblin.h"
 #include "Sprite.h"
 #include <SDL2/SDL.h>
 

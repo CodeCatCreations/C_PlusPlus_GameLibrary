@@ -1,7 +1,7 @@
 #ifndef GOBLIN_H
 #define GOBLIN_H
 
-#include "../Sprite.h"
+#include "Sprite.h"
 #include <SDL2/SDL.h>
 
 class Goblin: public Sprite {

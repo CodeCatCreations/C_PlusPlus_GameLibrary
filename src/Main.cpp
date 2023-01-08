@@ -1,7 +1,7 @@
 
 #include "GameEngine.h"
 #include "Pistol.h"
-#include "sprites/Goblin.h"
+#include "Goblin.h"
 
 cwing::Session ses;
 
