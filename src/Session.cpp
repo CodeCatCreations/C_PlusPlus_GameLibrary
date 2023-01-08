@@ -5,7 +5,7 @@
 
 using namespace std;
 
-#define FPS 80;
+#define FPS 60;
 
 namespace cwing {
 
