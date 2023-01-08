@@ -18,7 +18,6 @@ namespace cwing {
 	}
 
 	void Session::run() {
-		bool quit = false;
 		Uint32 tickInterval = 50 / FPS;
 
 		while (!quit) {
@@ -26,31 +25,19 @@ namespace cwing {
 			SDL_Event event;
 
 			while (SDL_PollEvent(&event)) {
-				switch (event.type) {
-				case SDL_QUIT:
-					quit = true;
-					break;
-				case SDL_MOUSEBUTTONDOWN:
-					for (Component* c : comps)
-						c->mouseDown(event.button.x, event.button.y);
-					break;
-				case SDL_MOUSEBUTTONUP:
-					for (Component* c : comps)
-						c->mouseUp(event.button.x, event.button.y);
-					break;
-				} //switch
-			} //inre while
+				eventHandler(event);
+			}
 
 			for (Component* c : comps)
 				c->tick();
 
 			for (Component* c : added)
 				comps.push_back(c);
+
 			added.clear();
 
 			for (Component* c : removed)
-				for (vector<Component*>::iterator i = comps.begin();
-					i != comps.end();)
+				for (auto i = comps.begin(); i != comps.end();)
 					if (*i == c) {
 						i = comps.erase(i);
 					}
@@ -69,4 +56,23 @@ namespace cwing {
 				SDL_Delay(delay);
 		} // yttre while
 	}
+
+	void Session::eventHandler(SDL_Event const& event) {
+		switch (event.type) {
+		case SDL_QUIT:
+			quit = true;
+			break;
+		case SDL_MOUSEBUTTONDOWN:
+			for (Component* c : comps)
+				c->mouseDown(event.button.x, event.button.y);
+			break;
+		case SDL_MOUSEBUTTONUP:
+			for (Component* c : comps)
+				c->mouseUp(event.button.x, event.button.y);
+			break;
+		} //switch
+
+
+	}
+
 }

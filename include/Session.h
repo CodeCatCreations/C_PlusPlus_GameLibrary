@@ -15,6 +15,8 @@ namespace cwing {
 	private:
 		std::vector<Component*> comps; // sprites ska läggas till
 		std::vector<Component*> added, removed;
+		void eventHandler(SDL_Event const& event);
+		bool quit = false;
 	};
 
 }
