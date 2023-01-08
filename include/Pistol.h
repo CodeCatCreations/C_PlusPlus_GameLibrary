@@ -9,6 +9,7 @@
 #include <SDL2/SDL.h>
 #include <string>
 
+extern cwing::Session ses;
 
 class Pistol: public cwing::Component {
 public:

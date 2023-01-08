@@ -38,4 +38,6 @@ namespace cwing {
 		return font;
 	}
 
+	System sys; // Statiskt globalt objekt (definierad utanför funktioner.)
+
 }

@@ -5,11 +5,11 @@
 #include "Constants.h"
 #include "Session.h"
 #include "System.h"
-
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL.h>
 #include <string>
 
+extern cwing::Session ses;
 
 class Bullet: public cwing::Component {
 

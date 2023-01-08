@@ -6,6 +6,8 @@
 #include "System.h"
 #include <SDL2/SDL_image.h>
 
+extern cwing::Session ses;
+
 class Sprite: public cwing::Component {
 public:
     Sprite(int x, int y, int w, int h): Component(x, y, w, h) {};

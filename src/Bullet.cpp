@@ -29,7 +29,7 @@ void Bullet::tick() {
 
     counter++;
     if (rect.y <= mouse_y)
-        cwing::ses.remove(this);
+        ses.remove(this);
     else if (counter % 10 == 0)
         rect.y -= 10;
 
