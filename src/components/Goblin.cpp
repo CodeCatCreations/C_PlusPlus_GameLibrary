@@ -29,7 +29,7 @@ void Goblin::draw() const {
 void Goblin::tick() {
 	counter++;
 
-	if (rect.y + height >= y_of_screen_bottom) {
+	if ((rect.y + height >= y_of_screen_bottom) || isShot()) {
 		ses.remove(this);
 		auto it = std::find(Goblin::goblins.begin(), Goblin::goblins.end(), this); // Find the iterator pointing to the Goblin object
 		if (it != goblins.end()) {
@@ -39,7 +39,7 @@ void Goblin::tick() {
 
 	else if (counter % 100 == 0) {
 		rect.y += 2;
-		if (Goblin::goblins.size() < 7 && counter % 4000 == 0) {
+		if (Goblin::goblins.size() < 7) {
 			int x = rand() % (x_of_screen_width - width);
 			Goblin* goblin = new Goblin(x, 50, 50);
 			Goblin::goblins.push_back(goblin);
@@ -48,4 +48,17 @@ void Goblin::tick() {
 		}
 	}
 
+}
+
+bool Goblin::isShot() {
+	for (Component* c : ses.getComps()) {
+		// Skip this object
+		if (c == this) continue;
+		// Check if the two rectangles intersect
+		SDL_Rect otherRect = c->getRect();
+		if (SDL_HasIntersection(&rect, &otherRect)) {
+			return true;
+		}
+	}
+	return false;
 }

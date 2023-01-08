@@ -75,4 +75,9 @@ namespace cwing {
 
 	}
 
+	const std::vector<Component*>& Session::getComps() const {
+		return comps;
+	}
+
+
 }

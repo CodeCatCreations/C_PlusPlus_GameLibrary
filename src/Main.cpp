@@ -6,8 +6,8 @@
 cwing::Session ses;
 
 int main(int argc, char** argv) {
-	// Pistol* pistol = new Pistol();
-	// ses.add(pistol);
+	Pistol* pistol = new Pistol();
+	ses.add(pistol);
 
 	Goblin* goblin = new Goblin(0, 50, 50);
 	ses.add(goblin);

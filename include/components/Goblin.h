@@ -10,6 +10,7 @@ public:
 	~Goblin();
 	void draw() const;
 	void tick();
+	bool isShot();
 
 private:
 	int width;
