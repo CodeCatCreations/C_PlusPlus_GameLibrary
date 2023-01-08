@@ -1,5 +1,5 @@
 #include "Constants.h"
-#include "sprites/Goblin.h"
+#include "Goblin.h"
 #include "Sprite.h"
 #include <SDL2/SDL.h>
 
@@ -19,7 +19,7 @@ void Goblin::tick() {
 
 	counter++;
 	if (rect.y >= 500)
-		cwing::ses.remove(this);
+		ses.remove(this);
 	else if (counter % 100 == 0)
 		rect.y += 2;
 
