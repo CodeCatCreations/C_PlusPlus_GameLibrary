@@ -42,6 +42,17 @@ namespace cwing {
 		return win;
 	}
 
+	int System::getWindowWidth() const {
+		int w, h;
+		SDL_GetWindowSize(System::win, &w, &h);
+		return w;
+	}
+	int System::getWindowHeight() const {
+		int w, h;
+		SDL_GetWindowSize(System::win, &w, &h);
+		return h;
+	}
+
 	System sys; // Statiskt globalt objekt (definierad utanför funktioner.)
 
 }
