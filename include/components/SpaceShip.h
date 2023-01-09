@@ -19,7 +19,7 @@ public:
     void draw() const override;
     void tick() override;
     void handleMouseDown(int x, int y) {}
-    void shoot() {}
+    void shoot();
     void keyDown();
     void keyUp();
     void keyLeft();
@@ -29,8 +29,6 @@ public:
 private:
     bool checkBorder();
     std::vector<Bullet*> bullets;
-    int x_coordinate;
-    int y_coordinate;
     int counter = 0;
     SDL_Texture* texture;
     const int steps = 5;

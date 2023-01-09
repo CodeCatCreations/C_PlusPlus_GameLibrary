@@ -2,6 +2,7 @@
 #include "Session.h"
 #include "System.h"
 #include <SDL2/SDL.h>
+#include "SpaceShip.h"
 
 using namespace std;
 
@@ -71,10 +72,14 @@ namespace cwing {
 			for (Component* c : comps)
 				c->mouseUp(event.button.x, event.button.y);
 			break;
+
+			/*
 		case SDL_KEYUP:
 			for (Component* c : comps)
-				c->keyDown();
+
 			break;
+
+			*/
 		case SDL_KEYDOWN:
 			if (event.key.keysym.scancode == SDL_SCANCODE_UP) {
 				for (Component* c : comps) {
@@ -100,7 +105,15 @@ namespace cwing {
 				}
 				break;
 			}
-
+			else if (event.key.keysym.scancode == SDL_SCANCODE_SPACE) {
+				for (Component* c : comps) {
+					SpaceShip* ship = dynamic_cast<SpaceShip*>(c);
+					if (ship != nullptr) {
+						ship->shoot();
+					}
+				}
+				break;
+			}
 
 		} //switch
 

@@ -1,7 +1,7 @@
 #include "SpaceShip.h"
 
-SpaceShip::SpaceShip(): Component(cwing::sys.getWindowWidth() / 2, cwing::sys.getWindowHeight() - 20, 40, 40), x_coordinate(cwing::sys.getWindowWidth() / 2), y_coordinate(cwing::sys.getWindowHeight() + 5) {
-    texture = IMG_LoadTexture(cwing::sys.get_ren(), (constants::gResPath + "images/cats.jpeg").c_str());
+SpaceShip::SpaceShip(): Component(cwing::sys.getWindowWidth() / 2, cwing::sys.getWindowHeight() - 100, 40, 70) {
+    texture = IMG_LoadTexture(cwing::sys.get_ren(), (constants::gResPath + "images/spaceship.svg").c_str());
 }
 
 void SpaceShip::draw() const {
@@ -61,3 +61,7 @@ void SpaceShip::keyRight() {
     }
 }
 
+void SpaceShip::shoot() {
+    Bullet* b = Bullet::getInstance(rect.x, rect.y - 40);
+    ses.add(b);
+}

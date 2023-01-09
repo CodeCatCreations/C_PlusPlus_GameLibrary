@@ -2,9 +2,10 @@
 #include "Goblin.h"
 #include <SDL2/SDL_mixer.h>
 #include <SDL2/SDL.h>
+#include "SpaceShip.h"
 
 
-Bullet::Bullet(int x, int y): Component(x - 20, cwing::sys.getWindowHeight(), 40, 40), mouse_x(x), mouse_y(y) {
+Bullet::Bullet(int x, int y): Component(x, y, 40, 40), mouse_x(x), mouse_y(y) {
     texture = IMG_LoadTexture(cwing::sys.get_ren(), (constants::gResPath + "images/bullet.png").c_str());
     sound = Mix_LoadWAV((constants::gResPath + "sounds/shot.mp3").c_str());
     sound_played = false;

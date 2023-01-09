@@ -39,7 +39,7 @@ void Goblin::tick() {
 		rect.y += 2;
 		if (Goblin::goblins.size() < 7 && counter % 500 == 0) {
 			int x = rand() % (x_of_screen_width - width);
-			Goblin* goblin = new Goblin(x, 50, 50);
+			Goblin* goblin = new Goblin(x, 45, 45);
 			bool intersects = false;
 			for (Goblin* g : Goblin::goblins) {
 				if (goblin->intersects(g->getRect())) {
