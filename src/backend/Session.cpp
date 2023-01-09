@@ -71,6 +71,37 @@ namespace cwing {
 			for (Component* c : comps)
 				c->mouseUp(event.button.x, event.button.y);
 			break;
+		case SDL_KEYUP:
+			for (Component* c : comps)
+				c->keyDown();
+			break;
+		case SDL_KEYDOWN:
+			if (event.key.keysym.scancode == SDL_SCANCODE_UP) {
+				for (Component* c : comps) {
+					c->keyUp();
+				}
+				break;
+			}
+			else if (event.key.keysym.scancode == SDL_SCANCODE_DOWN) {
+				for (Component* c : comps) {
+					c->keyDown();
+				}
+				break;
+			}
+			else if (event.key.keysym.scancode == SDL_SCANCODE_LEFT) {
+				for (Component* c : comps) {
+					c->keyLeft();
+				}
+				break;
+			}
+			else if (event.key.keysym.scancode == SDL_SCANCODE_RIGHT) {
+				for (Component* c : comps) {
+					c->keyRight();
+				}
+				break;
+			}
+
+
 		} //switch
 
 

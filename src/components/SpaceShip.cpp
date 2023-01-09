@@ -1,14 +1,6 @@
 #include "SpaceShip.h"
 
-
-SpaceShip::SpaceShip(): Sprite(cwing::sys.getWindowWidth() / 2 - 50,
-    cwing::sys.getWindowHeight() - 100, 100, 100),
-    x_coordinate(cwing::sys.getWindowWidth() / 2 - 50),
-    y_coordinate(cwing::sys.getWindowHeight() - 100) {}
-
-SpaceShip::SpaceShip(int x, int y, int w, int h): Sprite(x, y, w, h),
-x_coordinate(x),
-y_coordinate(y) {
+SpaceShip::SpaceShip(): Component(cwing::sys.getWindowWidth() / 2, cwing::sys.getWindowHeight() - 20, 40, 40), x_coordinate(cwing::sys.getWindowWidth() / 2), y_coordinate(cwing::sys.getWindowHeight() + 5) {
     texture = IMG_LoadTexture(cwing::sys.get_ren(), (constants::gResPath + "images/cats.jpeg").c_str());
 }
 
@@ -18,43 +10,54 @@ void SpaceShip::draw() const {
 }
 
 void SpaceShip::tick() {
-    // Move and draw the bullets
-    rect.x = x_coordinate;
-    rect.y = y_coordinate;
-    for (Bullet* bullet : bullets) {
-        bullet->tick();
-        bullet->draw();
+    counter++;
+
+}
+
+bool SpaceShip::intersects(const SDL_Rect& otherRect) const {
+    // Store the result of getRect in a local variable
+    SDL_Rect rect = getRect();
+    // Return false = do not want to be removed from session
+
+    if (SDL_HasIntersection(&rect, &otherRect)) {
+        // TODO: Lose life when intersecting 
+        return false;
     }
-
+    return false;
 }
 
-void SpaceShip::handleMouseDown(int x, int y) {
-    // Create a new bullet at the mouse coordinates
-    Bullet* bullet = new Bullet(x, y);
-    bullets.push_back(bullet);
-}
+bool SpaceShip::checkBorder() {
+    int window_max_x = cwing::sys.getWindowWidth();
+    int window_max_y = cwing::sys.getWindowHeight();
 
-void SpaceShip::shoot() {
-    Bullet* bullet = new Bullet(x_coordinate, y_coordinate);
-    bullets.push_back(bullet);
+    if (rect.x >= (window_max_x - steps) ||
+        rect.x <= steps ||
+        rect.y >= window_max_y ||
+        rect.y <= steps) {
+        return false;
+    }
+    return true;
+
 }
 
 void SpaceShip::keyDown() {
-    // Update the y-coordinate of the spaceship to move it down
-    y_coordinate += 10;
+    if (checkBorder()) {
+        rect.y += steps;
+    }
 }
-
 void SpaceShip::keyUp() {
-    // Update the y-coordinate of the spaceship to move it up
-    y_coordinate -= 10;
+    if (checkBorder()) {
+        rect.y -= steps;
+    }
 }
-
 void SpaceShip::keyLeft() {
-    // Update the x-coordinate of the spaceship to move it left
-    x_coordinate -= 10;
+    if (checkBorder()) {
+        rect.x -= steps;
+    }
+}
+void SpaceShip::keyRight() {
+    if (checkBorder()) {
+        rect.x += steps;
+    }
 }
 
-void SpaceShip::keyRight() {
-    // Update the x-coordinate of the spaceship to move it right
-    x_coordinate += 10;
-}

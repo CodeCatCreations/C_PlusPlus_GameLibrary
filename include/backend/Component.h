@@ -11,6 +11,10 @@ namespace cwing {
 	public:
 		virtual void mouseDown(int x, int y) {}
 		virtual void mouseUp(int x, int y) {}
+		virtual void keyDown() {}
+		virtual void keyUp() {}
+		virtual void keyLeft() {}
+		virtual void keyRight() {}
 		virtual void draw() const = 0;
 		SDL_Rect getRect() const { return rect; }
 		// tick() varje sprite har en tick, som anropas en gång per varv i run loopen, tick består av beteendet av spriten
