@@ -1,4 +1,5 @@
 #include "Bullet.h"
+#include "Goblin.h"
 #include <SDL2/SDL_mixer.h>
 #include <SDL2/SDL.h>
 
@@ -8,7 +9,6 @@ Bullet::Bullet(int x, int y): Component(x - 20, 400, 40, 40), mouse_x(x), mouse_
     sound = Mix_LoadWAV((constants::gResPath + "sounds/shot.mp3").c_str());
     sound_played = false;
 }
-
 
 Bullet::~Bullet() {
     SDL_DestroyTexture(texture);
@@ -28,9 +28,24 @@ void Bullet::draw() const {
 void Bullet::tick() {
 
     counter++;
-    if (rect.y <= mouse_y)
-        ses.remove(this);
-    else if (counter % 10 == 0)
+    /* if (rect.y <= mouse_y)
+         ses.remove(this);
+     else
+     */
+
+    if (counter % 10 == 0)
         rect.y -= 10;
 
 }
+
+bool Bullet::intersects(const SDL_Rect& otherRect) const {
+    // Store the result of getRect in a local variable
+    SDL_Rect rect = getRect();
+    // Check if the Bullet and otherRect rectangles intersect
+    if (SDL_HasIntersection(&rect, &otherRect)) {
+        return true;
+    }
+    return false;
+}
+
+

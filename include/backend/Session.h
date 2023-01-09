@@ -18,6 +18,7 @@ namespace cwing {
 		std::vector<Component*> added, removed;
 		void eventHandler(SDL_Event const& event);
 		bool quit = false;
+		void checkIntersections();
 	};
 
 }

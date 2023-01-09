@@ -21,6 +21,7 @@ public:
     ~Bullet();
     void draw() const;
     void tick();
+    bool intersects(const SDL_Rect& rect) const override;
 
 private:
     int mouse_x;

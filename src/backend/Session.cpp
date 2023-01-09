@@ -28,6 +28,7 @@ namespace cwing {
 				eventHandler(event);
 			}
 
+			checkIntersections();
 			for (Component* c : comps)
 				c->tick();
 
@@ -78,6 +79,24 @@ namespace cwing {
 	const std::vector<Component*>& Session::getComps() const {
 		return comps;
 	}
+
+	void Session::checkIntersections() {
+		for (Component* c1 : comps) {
+			for (Component* c2 : comps) {
+				if (c1 == c2) continue;
+				if (c1->intersects(c2->getRect())) {
+					// Check if c1 or c2 should be removed from the Session
+					if (c1->intersects(c2->getRect())) {
+						remove(c1);
+					}
+					if (c2->intersects(c1->getRect())) {
+						remove(c2);
+					}
+				}
+			}
+		}
+	}
+
 
 
 }

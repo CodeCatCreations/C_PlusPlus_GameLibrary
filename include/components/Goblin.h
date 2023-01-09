@@ -3,6 +3,7 @@
 
 #include "Sprite.h"
 #include <SDL2/SDL.h>
+#include "Component.h"
 
 class Goblin: public Sprite {
 public:
@@ -11,6 +12,7 @@ public:
 	void draw() const;
 	void tick();
 	bool isShot();
+	bool intersects(const SDL_Rect& otherRect) const override;
 
 private:
 	int width;
@@ -21,6 +23,7 @@ private:
 	static std::vector<Goblin*> goblins;
 	int y_of_screen_bottom;
 	int x_of_screen_width;
+	bool is_shot = false;
 
 };
 
