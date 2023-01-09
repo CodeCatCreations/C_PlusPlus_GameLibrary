@@ -13,11 +13,8 @@ Goblin::Goblin(int x, int w, int h): Sprite(x, 0, w, h), width(w), height(h) {
 	if (Goblin::goblins.size() == 0) {
 		Goblin::goblins.push_back(this);
 	}
-	SDL_Window* window = cwing::sys.get_win();
-	int window_width, window_height;
-	SDL_GetWindowSize(window, &window_width, &window_height);
-	y_of_screen_bottom = window_height;
-	x_of_screen_width = window_width;
+	x_of_screen_width = cwing::sys.getWindowWidth();
+	y_of_screen_bottom = cwing::sys.getWindowHeight();
 }
 
 Goblin::~Goblin() {}
