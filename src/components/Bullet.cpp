@@ -4,7 +4,7 @@
 #include <SDL2/SDL.h>
 
 
-Bullet::Bullet(int x, int y): Component(x - 20, 400, 40, 40), mouse_x(x), mouse_y(y) {
+Bullet::Bullet(int x, int y): Component(x - 20, cwing::sys.getWindowHeight(), 40, 40), mouse_x(x), mouse_y(y) {
     texture = IMG_LoadTexture(cwing::sys.get_ren(), (constants::gResPath + "images/bullet.png").c_str());
     sound = Mix_LoadWAV((constants::gResPath + "sounds/shot.mp3").c_str());
     sound_played = false;
