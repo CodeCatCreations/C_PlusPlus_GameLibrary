@@ -8,6 +8,7 @@
 class Goblin: public Sprite {
 public:
 	Goblin(int x, int w, int h);
+	Goblin(): Goblin(0, 50, 50) {};
 	~Goblin();
 	void draw() const;
 	void tick();
