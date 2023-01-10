@@ -17,8 +17,6 @@ namespace cwing {
 		virtual void keyRight() {}
 		virtual void draw() const = 0;
 		SDL_Rect getRect() const { return rect; }
-		// tick() varje sprite har en tick, som anropas en gång per varv i run loopen, tick består av beteendet av spriten
-		// tex om en sprite rör sig uppdaterar tick dens x och y koordinater
 		virtual void tick() = 0;
 		virtual ~Component() = default;
 		virtual bool intersects(const SDL_Rect& otherRect) const {

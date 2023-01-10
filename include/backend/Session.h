@@ -12,9 +12,9 @@ namespace cwing {
 		void add(Component* comp);
 		void remove(Component* comp);
 		const std::vector<Component*>& getComps() const;
-		void run(); // För varje varv i loopen går man igenom alla komponenter (sprite) och anropar tick()
+		void run();
 	private:
-		std::vector<Component*> comps; // sprites ska läggas till
+		std::vector<Component*> comps;
 		std::vector<Component*> added, removed;
 		void eventHandler(SDL_Event const& event);
 		bool quit = false;
